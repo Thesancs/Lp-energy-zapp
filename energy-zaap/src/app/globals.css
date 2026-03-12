@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #020A05;
+  --color-foreground: #FFFFFF;
+  --color-brand: #00FFA3;
+  --color-brand-dim: rgba(0, 255, 163, 0.2);
+  --color-surface: #0D1711;
+  --color-surface-hover: #16241A;
+  --color-text-muted: #9CA3AF;
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), Arial, sans-serif;
+  overflow-x: hidden;
+}
