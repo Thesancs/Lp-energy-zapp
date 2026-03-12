@@ -47,8 +47,8 @@ export const ParticleNetwork = () => {
         this.firingSpeed = Math.random() * 0.02 + 0.005;
       }
 
-      update(width: number, height: number) {
-        this.vx += (Math.random() - 0.5) * 0.1;
+      update(width: number, height: number, isMobile: boolean) {
+        this.vx += (Math.random() - 0.5) * (isMobile ? 0.05 : 0.1);
         
         this.x += this.vx;
         this.y += this.vy;
@@ -56,7 +56,7 @@ export const ParticleNetwork = () => {
         if (this.firing > 0) {
           this.firing -= this.firingSpeed;
           if (this.firing < 0) this.firing = 0;
-        } else if (Math.random() < 0.0001) { 
+        } else if (Math.random() < (isMobile ? 0.00005 : 0.0001)) { 
           this.firing = 1;
         }
 
@@ -70,13 +70,15 @@ export const ParticleNetwork = () => {
         if (this.x > width + 20) this.x = -20;
       }
 
-      draw(ctx: CanvasRenderingContext2D) {
+      draw(ctx: CanvasRenderingContext2D, isMobile: boolean) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius + (this.firing * 2), 0, Math.PI * 2);
         
         if (this.firing > 0) {
-          ctx.shadowBlur = 15 * this.firing;
-          ctx.shadowColor = particleColor;
+          if (!isMobile) {
+            ctx.shadowBlur = 15 * this.firing;
+            ctx.shadowColor = particleColor;
+          }
           ctx.fillStyle = `rgba(255, 255, 255, ${this.firing})`; 
           ctx.fill();
           ctx.fillStyle = particleColor;
@@ -107,8 +109,9 @@ export const ParticleNetwork = () => {
       ctx.scale(dpr, dpr);
 
       particles = [];
-      const density = window.innerWidth < 768 ? 15000 : 7000;
-      const count = Math.min(Math.floor(window.innerWidth * window.innerHeight / density), window.innerWidth < 768 ? 50 : 200);
+      const isMobile = window.innerWidth < 768;
+      const density = isMobile ? 30000 : 7000;
+      const count = Math.min(Math.floor(window.innerWidth * window.innerHeight / density), isMobile ? 30 : 200);
       for (let i = 0; i < count; i++) {
         particles.push(new Particle(window.innerWidth, window.innerHeight, true));
       }
@@ -116,14 +119,15 @@ export const ParticleNetwork = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      const isMobile = window.innerWidth < 768;
       
       // Removed the hardcoded black background fill so it can be transparent 
       // over the dark sections, or kept if we want it isolated.
       // We will leave it fully transparent since it's going to be integrated as a background block.
 
       for (let i = 0; i < particles.length; i++) {
-        particles[i].update(window.innerWidth, window.innerHeight);
-        particles[i].draw(ctx);
+        particles[i].update(window.innerWidth, window.innerHeight, isMobile);
+        particles[i].draw(ctx, isMobile);
 
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;

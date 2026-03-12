@@ -45,6 +45,8 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
     <div className="border border-white/5 bg-[#0A0F0C]/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#00FFA3]/20">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-label={isOpen ? "Recolher pergunta" : "Expandir pergunta"}
         className="w-full p-6 text-left flex items-center justify-between gap-4 group"
       >
         <span className="text-lg font-medium text-white/90 group-hover:text-white transition-colors">{question}</span>
@@ -132,10 +134,10 @@ export default function Home() {
             <div className="flex items-center">
               <Image
                 src="/Energyzapp.svg"
-                alt="Energy Zapp Logo"
-                width={200}
-                height={64}
-                className="h-32 w-auto object-contain"
+                alt="Logo Energy Zapp"
+                width={120}
+                height={40}
+                className="h-10 w-auto object-contain"
                 priority
               />
             </div>
@@ -149,6 +151,7 @@ export default function Home() {
             <div className="flex items-center gap-6">
               <button 
                 onClick={() => setLoginOpen(true)}
+                aria-label="Abrir modal de login"
                 className="text-sm text-[#8892B0] font-medium hover:text-white transition-colors"
               >
                 Entrar
@@ -188,10 +191,11 @@ export default function Home() {
 
               <button
                 onClick={() => document.getElementById('pricing-plans')?.scrollIntoView({ behavior: 'smooth' })}
+                aria-label="Ativar minha infraestrutura de vendas e ver planos de preço"
                 className="group relative h-14 px-8 rounded-full bg-[#00FFA3] text-black font-semibold text-lg hover:bg-[#00e695] transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden shadow-[0_0_40px_rgba(0,255,163,0.3)] mx-auto"
               >
                 Ativar minha infraestrutura de vendas
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 duration-300 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 duration-300 transition-transform" aria-hidden="true" />
               </button>
             </div>
           }
@@ -739,18 +743,19 @@ Pronúncia sempre por extenso:
           </p>
 
           <button 
+            aria-label="Falar com um especialista via WhatsApp"
             className="h-16 px-10 rounded-full bg-[#00FFA3] text-black font-semibold text-lg hover:scale-[1.03] transition-all flex items-center gap-3 shadow-[0_0_40px_rgba(0,255,163,0.3)] mb-32"
           >
             Falar com um Especialista
-            <MessageCircle className="w-5 h-5" />
+            <MessageCircle className="w-5 h-5" aria-hidden="true" />
           </button>
 
           <div className="flex flex-col md:flex-row items-center justify-between w-full pt-8 border-t border-white/[0.05] text-[#8892B0]/50 text-sm">
             <span>© {new Date().getFullYear()} Energy Zapp Inc.</span>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Twitter</a>
-              <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-              <a href="#" className="hover:text-white transition-colors">Termos</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar nosso Twitter" className="hover:text-white transition-colors">Twitter</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar nosso LinkedIn" className="hover:text-white transition-colors">LinkedIn</a>
+              <a href="/termos" aria-label="Ler nossos termos de uso" className="hover:text-white transition-colors">Termos</a>
             </div>
           </div>
 
@@ -962,9 +967,10 @@ Pronúncia sempre por extenso:
                 {/* Close Button Inside Modal */}
                 <button
                   onClick={() => setCheckoutOpen(false)}
+                  aria-label="Fechar checkout"
                   className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white/50"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -1011,9 +1017,10 @@ Pronúncia sempre por extenso:
                 </div>
                 <button 
                   onClick={() => setLoginOpen(false)}
+                  aria-label="Fechar modal de login"
                   className="absolute -top-4 -right-4 w-10 h-10 rounded-full hover:bg-white/5 flex items-center justify-center text-[#8892B0] transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
 
