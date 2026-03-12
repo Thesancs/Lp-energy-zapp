@@ -606,15 +606,8 @@ Pronúncia sempre por extenso:
           <div className="grid lg:grid-cols-2 gap-16 items-center flex-col-reverse lg:flex-row">
             <div className="space-y-8">
               <div className="flex flex-col gap-4">
-                <Image
-                  src="/branco sf.svg"
-                  alt="ALL IN BI Logo"
-                  width={140}
-                  height={40}
-                  className="h-10 w-auto object-contain brightness-125"
-                />
                 <div className="text-[#00FFA3] text-[11px] font-bold uppercase tracking-[0.2em] leading-none">
-                  All in Bi • Inteligência Comercial
+                  Expertise Comercial • Performance Máxima
                 </div>
               </div>
 
@@ -625,7 +618,7 @@ Pronúncia sempre por extenso:
 
               <div className="space-y-6 text-[#8892B0] text-lg font-light leading-relaxed">
                 <p>
-                  A <span className="text-white font-medium">Energy Zapp</span> é um produto da <span className="text-white font-medium">ALL IN BI</span>, empresa especializada em inteligência comercial, automação e infraestrutura de dados aplicada ao crescimento de empresas.
+                  A <span className="text-white font-medium">Energy Zapp</span> foi criada por especialistas em inteligência comercial, dedicada a fornecer infraestrutura de IA de alta performance para o crescimento de empresas.
                 </p>
                 <p>
                   Nosso time acumula <span className="text-[#00FFA3] font-medium">mais de 15 anos de experiência real em operações de vendas</span>, estruturando funis comerciais, processos de qualificação e estratégias de conversão para empresas de diferentes setores.
@@ -751,7 +744,7 @@ Pronúncia sempre por extenso:
           </button>
 
           <div className="flex flex-col md:flex-row items-center justify-between w-full pt-8 border-t border-white/[0.05] text-[#8892B0]/50 text-sm">
-            <span>© {new Date().getFullYear()} Energy Zapp Inc.</span>
+            <span>© {new Date().getFullYear()} Energy Zapp. Todos os direitos reservados.</span>
             <div className="flex gap-6 mt-4 md:mt-0">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar nosso Twitter" className="hover:text-white transition-colors">Twitter</a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar nosso LinkedIn" className="hover:text-white transition-colors">LinkedIn</a>
