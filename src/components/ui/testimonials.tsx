@@ -1,116 +1,104 @@
 "use client";
-
+import { TestimonialsColumn } from "./testimonials-columns-1";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 
 const testimonials = [
   {
+    text: "Parei de perder venda no final de semana. A IA atende todo mundo na hora e já deixa o agendamento pronto.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&h=150&auto=format&fit=crop",
     name: "Ricardo Mendes",
-    role: "Head of Growth",
-    company: "TechNexus B2B",
-    content: "A Energy Zapp mudou o jogo para nossa operação. Antes perdíamos quase metade das leads em fluxos de chatbot.",
-    rating: 5,
-    video: "/videos/testimonial-1.mp4" // Exemplo de suporte a vídeo
+    role: "Neo Outlet",
   },
   {
-    name: "Camila Ortiz",
-    role: "Diretora Comercial",
-    company: "Scale Up Solutions",
-    content: "Agora conseguimos entender exatamente como a IA conduziu a conversa e avançou a negociação.",
-    rating: 5,
-    video: "/videos/testimonial-2.mp4" // Adicione o caminho do vídeo aqui
+    text: "O pessoal achou que eu tinha contratado 5 vendedores novos. Ela responde tão rápido que o cliente nem percebe que é robô.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Bruno Sales",
+    role: "Studio Alpha",
   },
   {
-    name: "Felipe Andrade",
-    role: "Founder",
-    company: "Nexya.ai",
-    content: "O volume de atendimento virou algo surreal. O que antes exigia vários atendentes agora roda automaticamente.",
-    rating: 5,
-    video: "/videos/testimonial-3.webm"
-  }
+    text: "Finalmente um sistema que não trava. Coloquei pra rodar e em dois dias já tinha fechado três contratos no automático.",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Mariana Costa",
+    role: "Lumni Joias",
+  },
+  {
+    text: "O que eu mais gostei foi a facilidade. Não sou do TI e consegui configurar tudo sozinha em menos de uma hora.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Ana Silveira",
+    role: "Espaço Vida",
+  },
+  {
+    text: "Eu usava outros bots, mas eram muito robóticos. Essa IA da Energy parece que está lendo a mente do cliente.",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Zainab Garcia",
+    role: "Tech Sinergy",
+  },
+  {
+    text: "Minha taxa de conversão dobrou. Antes as leads chegavam e esfriavam no WhatsApp, agora o fechamento é imediato.",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Aline Khan",
+    role: "Boutique Prime",
+  },
+  {
+    text: "O suporte dos caras é nota 10. Precisei de uma mão na integração e resolveram em minutos.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Fabio Diniz",
+    role: "Diniz Imobiliária",
+  },
+  {
+    text: "Agora eu durmo tranquila sabendo que tem alguém vendendo pra mim 24 horas por dia.",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Sonia Santos",
+    role: "Santos Consultoria",
+  },
+  {
+    text: "O investimento se pagou na primeira semana. É a melhor ferramenta que já usei pro meu WhatsApp comercial.",
+    image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=150&h=150&auto=format&fit=crop",
+    name: "Helder Lima",
+    role: "Garage VIP",
+  },
 ];
+
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
 
 export function TestimonialsSection() {
   return (
-    <section className="py-32 relative overflow-hidden bg-[#F8FAFC]">
-      {/* Top Blur Transition (Dark to Light) - Seamless Overlap */}
-      <div className="absolute -top-px inset-x-0 h-64 bg-gradient-to-b from-[#071018] via-[#071018]/40 to-transparent z-30 pointer-events-none" />
-      <div className="absolute -top-px inset-x-0 h-64 backdrop-blur-3xl [mask-image:linear-gradient(to_bottom,black_20%,transparent)] z-20 pointer-events-none" />
+    <section className="relative py-32 overflow-hidden bg-white">
+      {/* Seamless Transition Overlays (White Theme) */}
+      <div className="absolute -top-px inset-x-0 h-48 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
+      <div className="absolute -bottom-px inset-x-0 h-48 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
 
-      {/* Subtle Glow Back */}
+      {/* Subtle Glow Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#00FFA3]/10 blur-[120px] rounded-[100%] pointer-events-none" />
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border-[#00FFA3]/30 bg-[#00FFA3]/10 text-[#00b372] text-xs font-bold uppercase tracking-widest mb-4">
-             <Star className="w-3 h-3 fill-[#00b372]" /> Prova Social
+      <div className="container relative z-10 mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-[640px] mx-auto text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#00FFA3]/20 bg-[#00FFA3]/5 text-[#00FFA3] text-xs font-bold uppercase tracking-widest mb-6">
+            Depoimentos
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-[#071018]">
-            Resultados que falam por <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#071018] to-[#64748B]">si mesmos.</span>
+
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-slate-900 mb-6">
+            O que nossos <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-[#00CC82]">usuários dizem</span>
           </h2>
+          <p className="text-xl text-slate-600 font-light leading-relaxed">
+            Veja como a Energy Zapp está transformando a operação comercial de centenas de empresas.
+          </p>
+        </motion.div>
+
+        <div className="flex justify-center gap-6 mt-10 max-h-[740px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={25} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={35} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={30} />
         </div>
-
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          {testimonials.map((testi, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="break-inside-avoid relative overflow-hidden bg-white border border-slate-200 rounded-[40px] p-8 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] transition-all duration-500 hover:border-[#00FFA3] hover:shadow-[0_20px_40px_-15px_rgba(0,255,163,0.15)] flex flex-col group"
-            >
-              {testi.video && (
-                <div className="relative mb-6 aspect-[9/16] w-full rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 group/video shadow-sm">
-                  <video 
-                    src={testi.video} 
-                    className="w-full h-full object-cover"
-                    controls
-                    muted
-                    loop
-                    playsInline
-                  />
-                  {!testi.video.includes('#') && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent flex items-end p-6 pointer-events-none group-hover/video:opacity-0 transition-opacity">
-                      <div className="flex items-center gap-3 text-white text-xs uppercase tracking-[0.2em] font-bold">
-                        <div className="w-2 h-2 rounded-full bg-[#00FFA3] shadow-[0_0_10px_#00FFA3]" />
-                        Depoimento em Vídeo
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              <div className="flex gap-1 mb-6">
-                {[...Array(testi.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-[#00b372] fill-[#00b372]" />
-                ))}
-              </div>
-              
-              <p className="text-[#334155] text-lg leading-relaxed mb-8 italic">
-                "{testi.content}"
-              </p>
-
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full bg-[#00FFA3]/10 border border-[#00FFA3]/20 flex items-center justify-center font-bold text-[#00b372] text-base shrink-0">
-                  {testi.name.charAt(0)}
-                </div>
-                <div>
-                  <h4 className="text-[#071018] font-semibold text-base">{testi.name}</h4>
-                  <p className="text-[#64748B] text-sm">{testi.role}, <span className="text-[#00b372] font-medium">{testi.company}</span></p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
       </div>
-      
-      {/* Bottom Blur Transition (Light to Dark) - Seamless Overlap */}
-      <div className="absolute -bottom-px inset-x-0 h-64 bg-gradient-to-t from-[#071018] via-[#071018]/40 to-transparent z-30 pointer-events-none" />
-      <div className="absolute -bottom-px inset-x-0 h-64 backdrop-blur-3xl [mask-image:linear-gradient(to_top,black_20%,transparent)] z-20 pointer-events-none" />
     </section>
   );
 }

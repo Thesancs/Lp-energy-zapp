@@ -74,6 +74,31 @@ export default function Home() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [checkoutPlan, setCheckoutPlan] = useState<{ name: string, price: string, totalPrice: string, isAnnual: boolean, includes: string[] } | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<'credit_card' | 'pix'>('credit_card');
+  
+  // Login State
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError('');
+    setIsLoggingIn(true);
+
+    // Only email required now
+    setTimeout(() => {
+      if (email.includes('@')) {
+        // Success - Simulating redirection
+        alert('Login realizado com sucesso! Redirecionando para a plataforma...');
+        setLoginOpen(false);
+      } else {
+        setLoginError('Por favor, insira um e-mail válido.');
+      }
+      setIsLoggingIn(false);
+    }, 1500);
+  };
 
   const openCheckout = (name: string, price: string, totalPrice: string, isAnnual: boolean, includes: string[]) => {
     setCheckoutPlan({ name, price, totalPrice, isAnnual, includes });
@@ -121,9 +146,17 @@ export default function Home() {
               <a href="#" className="hover:text-white transition-colors">Preços</a>
             </div>
 
-            <button className="h-8 px-4 rounded-full bg-white/[0.05] border border-white/[0.08] text-white text-xs font-semibold hover:bg-white/[0.1] transition-colors shadow-sm">
-              Criar Conta
-            </button>
+            <div className="flex items-center gap-6">
+              <button 
+                onClick={() => setLoginOpen(true)}
+                className="text-sm text-[#8892B0] font-medium hover:text-white transition-colors"
+              >
+                Entrar
+              </button>
+              <button className="h-9 px-5 rounded-full bg-white/[0.08] border border-white/[0.12] text-white text-xs font-bold hover:bg-white/[0.15] transition-all">
+                Criar Conta
+              </button>
+            </div>
           </div>
         </nav>
       </div>
@@ -557,6 +590,8 @@ Pronúncia sempre por extenso:
           </div>
         </div>
       </section>
+      
+      {/* Transition Removed */}
 
       {/* --- QUEM SOMOS (ALL IN BI) --- */}
       <section className="py-32 relative z-10 w-full max-w-[1200px] mx-auto px-6">
@@ -751,15 +786,14 @@ Pronúncia sempre por extenso:
 
               {/* Left Column: Product Summary */}
               <div className="w-full md:w-[45%] bg-[#0A0F0C] p-8 md:p-10 border-r border-white/5 flex flex-col">
-                <div className="mb-12 flex items-center gap-4">
+                <div className="mb-12 flex justify-center">
                   <Image
                     src="/Energyzapp.svg"
                     alt="Energy Zapp Logo"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 object-contain"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-contain"
                   />
-                  <span className="text-2xl font-bold text-white tracking-tighter">Energy Zapp</span>
                 </div>
 
                 {/* Hero Banner in Modal */}
@@ -937,6 +971,87 @@ Pronúncia sempre por extenso:
           </div>
         </div>
       )}
+
+      {/* --- LOGIN MODAL --- */}
+      <AnimatePresence>
+        {loginOpen && (
+          <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
+            {/* Backdrop for closing */}
+            <div 
+              className="absolute inset-0"
+              onClick={() => setLoginOpen(false)}
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-md bg-[#0A0F0C] border border-white/10 rounded-[32px] p-8 shadow-[0_0_50px_rgba(0,255,163,0.1)] overflow-hidden"
+            >
+              {/* Background Logo Watermark */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none scale-150">
+                <Image 
+                  src="/Energyzapp.svg" 
+                  alt="" 
+                  width={300} 
+                  height={300} 
+                  className="object-contain"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center mb-8 relative z-10">
+                <div className="flex flex-col items-center justify-center py-6">
+                  <Image 
+                    src="/Energyzapp.svg" 
+                    alt="Energy Zapp Logo" 
+                    width={100} 
+                    height={100} 
+                    className="object-contain"
+                  />
+                </div>
+                <button 
+                  onClick={() => setLoginOpen(false)}
+                  className="absolute -top-4 -right-4 w-10 h-10 rounded-full hover:bg-white/5 flex items-center justify-center text-[#8892B0] transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleLogin} className="space-y-5 relative z-10">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-[#8892B0] ml-1">Email corporativo</label>
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8892B0]" />
+                    <input 
+                      type="email" 
+                      required
+                      placeholder="Teste@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full h-12 bg-white/[0.03] border border-white/10 rounded-2xl pl-11 pr-4 text-white text-sm outline-none focus:border-[#00FFA3]/50 focus:bg-[#00FFA3]/5 transition-all placeholder:text-white/20"
+                    />
+                  </div>
+                </div>
+
+                <button 
+                  type="submit"
+                  disabled={isLoggingIn}
+                  className="w-full h-14 bg-[#00FFA3] text-black font-bold rounded-2xl hover:bg-[#00e695] transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(0,255,163,0.2)] disabled:opacity-50 disabled:cursor-not-allowed group mt-8"
+                >
+                  {isLoggingIn ? (
+                    <div className="w-6 h-6 border-[3px] border-black/20 border-t-black rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Entrar na Plataforma
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       <style jsx global>{`
         @keyframes marquee {
