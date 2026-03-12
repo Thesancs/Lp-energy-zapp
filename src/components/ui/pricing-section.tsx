@@ -11,7 +11,7 @@ import { Zap, Check } from "lucide-react";
 
 const plans = [
   {
-    name: "Sales Starter",
+    name: "Starter",
     description: "Infraestrutura inicial para automatizar atendimento e qualificação de leads.",
     price: 147.00,
     yearlyPrice: 57.70,
@@ -19,46 +19,48 @@ const plans = [
     buttonText: "Assinar Starter",
     buttonVariant: "outline" as const,
     includes: [
+      "250 conversas/mês",
       "Agente Comercial Base",
-      "Interpretação de Intenção",
-      "Qualificação Automática",
-      "Até 250 conversas/mês",
-      "Agendamento Automático"
+      "Conversas naturais apenas em texto",
+      "Qualificação Automática de clientes"
+
+
     ],
   },
   {
-    name: "Sales Engine",
-    description: "IA projetada para conduzir conversas e avançar negociações.",
-    price: 547.00,
-    yearlyPrice: 279.00,
+    name: "Assistente",
+    description: "IA projetada para conduzir conversas e avançar para vendas com texto e áudio.",
+    price: 547.70,
+    yearlyPrice: 279.70,
     isContact: false,
-    buttonText: "Assinar Engine",
+    buttonText: "Assinar Assistente",
     buttonVariant: "default" as const,
     popular: true,
     includes: [
-      "Tudo no Starter, mais:",
+      "Tudo no atendente, mais:",
+      "500 conversas/mês",
+      "Respostas por áudio humanizado",
       "Condução Estratégica de Vendas",
-      "Follow-ups Inteligentes",
-      "Recuperação Automática de Leads",
-      "Dashboards de Conversão",
-      "Até 500 conversas/mês"
+      "Agendamento Automático de Reuniões",
+      "Acompanhamento de Clientes"
+
     ],
   },
   {
-    name: "Auto Closer",
-    description: "Transforme o WhatsApp em um canal de vendas totalmente automatizado.",
+    name: "Vendedor",
+    description: "Transforme o WhatsApp em um canal de vendas totalmente automatizado atraves de texto, áudio e mídias.",
     price: 1100.00,
-    yearlyPrice: 497.00,
+    yearlyPrice: 497.70,
     isContact: false,
-    buttonText: "Assinar Auto Closer",
+    buttonText: "Assinar vendedor",
     buttonVariant: "outline" as const,
     includes: [
       "Tudo no Engine, mais:",
-      "Quebra Automática de Objeções",
-      "Apresentação Dinâmica de Ofertas",
-      "Áudio Generativo para Negociação",
-      "Fine-tuning da IA Customizado",
-      "1.000 conversas"
+      "1.000 conversas",
+      "Envio automatico de fotos e videos",
+      "Argumentação Comercial Avançada",
+      "Quebra automática de objeções",
+      "IA treinada com seus produtos e argumentos de venda",
     ],
   },
   {
@@ -74,8 +76,8 @@ const plans = [
       "Treinamento Customizado",
       "Engenharia de Prompt Especializada",
       "Integrações Avançadas",
-      "Suporte Prioritário",
-      "SLA comercial"
+      "Varias instancias de WhatsApp",
+      "Analise de processo comercial"
     ],
   },
 ];
